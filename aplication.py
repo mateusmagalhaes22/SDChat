@@ -28,11 +28,11 @@ def get_all():
 @app.route("/messages", methods=['POST'])
 def post_message():
     requestBody = request.json
-    cursor.execute(f"INSERT INTO messages 
+    cursor.execute(f'''INSERT INTO messages 
                    (user, content, msgDate) 
-                   VALUES ('{requestBody['user']}, 
+                   VALUES ('{requestBody['user']}', 
                    '{requestBody['content']}', 
-                   '{requestBody['msgDate']}')")
+                   '{requestBody['msgDate']}');''')
     data = {
         'user':requestBody['user'],
         'content':requestBody['content'],
