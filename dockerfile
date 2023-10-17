@@ -1,4 +1,4 @@
-from mysql:5.7
+from mysql
 
 COPY ./dbConf/ /docker-entrypoint-initdb.d/
 
