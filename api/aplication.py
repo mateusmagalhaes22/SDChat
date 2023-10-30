@@ -1,5 +1,13 @@
 import random
 from flask import Flask, jsonify, make_response, request
+from datetime import datetime
+
+class Mensagem():
+    def __init__(self, usuario, conteudo):
+        self.usuario = usuario
+        self.conteudo = conteudo
+        self.data = datetime.now()
+        
 
 class Room():
     def __init__(self, id, nome, senha):
@@ -56,7 +64,33 @@ def get_messages(id):
     for room in rooms:
         if room.id == id:
             for msg in room.mensagens:
-                data.append(msg)
+                data.append({
+                    'usuario': msg.usuario,
+                    'conteudo': msg.conteudo,
+                    'dataMsg': msg.data
+                })
             break
 
     return make_response(jsonify(data))
+
+@app.route("/rooms/<id>", methods=['POST'])
+def post_message(id):
+    
+    requestBody = request.json
+
+    id = int(request.view_args['id'])
+
+    msg = Mensagem(requestBody['usuario'], requestBody['conteudo'])
+
+    data = {
+        "usuario": requestBody['usuario'],
+        "conteudo": requestBody['conteudo']
+    }
+    for room in rooms:
+        if room.id == id:
+            room.mensagens.append(msg)
+            break
+
+    return make_response(jsonify(data))
+    
+    
