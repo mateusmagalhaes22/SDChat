@@ -8,6 +8,7 @@ class Mensagem():
         self.conteudo = conteudo
         self.data = datetime.now()
         
+        
 app = Flask(__name__)
 
 messages = list()
