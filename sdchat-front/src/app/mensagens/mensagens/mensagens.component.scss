@@ -1,0 +1,38 @@
+.canvas {
+  margin: 1%;
+}
+
+.msg-text {
+  font-size: 23px;
+  margin: 10px;
+}
+
+.msg-date {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.mensagem {
+  display: flex;
+  justify-content: space-between;
+  background-color: aquamarine;
+}
+
+.username-input {
+  margin: 10px;
+}
+
+.message-input {
+  margin: 10px;
+  width: 70%;
+}
+
+.new-message-form {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 10%;
+  margin: 10px;
+}

@@ -1,0 +1,36 @@
+<div class="canvas">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Message Column -->
+    <ng-container matColumnDef="conteudo">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td class="mensagem" mat-cell *matCellDef="let element">
+        <div class="msg-text">
+          {{element.usuario}}: {{element.conteudo}}
+        </div>
+        <div class="msg-date">
+          {{element.msgDate}}
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <form class="new-message-form" [formGroup]="newMessageForm">
+    <mat-form-field class="username-input">
+      <mat-label>Usuario</mat-label>
+      <input matInput id="usuario" formControlName="usuario">
+    </mat-form-field>
+
+    <mat-form-field class="message-input">
+      <mat-label></mat-label>
+      <input matInput id="conteudo" formControlName="conteudo">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="enviar()">Enviar</button>
+  </form>
+
+</div>
