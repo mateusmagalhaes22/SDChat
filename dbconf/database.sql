@@ -6,7 +6,7 @@ CREATE TABLE messages (
     usuario VARCHAR(30),
     conteudo VARCHAR(200),
     msgDate DATETIME
-)
+);
 
 SET character_set_client = utf8;
 SET character_set_connection = utf8;
